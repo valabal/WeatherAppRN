@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es2016",
+      "baseUrl": ".",
+      "sourceMap": true,
+      "paths": {
+        "@my-bootstrap/*": [
+          "./src/bootstrap/*"
+        ],        
+        "@my-component/*": [
+            "./src/component/*"
+          ],
+        "@my-config/*": [
+            "./src/config/*"
+         ],
+         "@my-module/*": [
+            "./src/module/*"
+         ],
+        "@my-navigation/*": [
+            "./src/navigation/*"
+         ],
+        "@my-util/*": [
+            "./src/util/*"
+        ]}
+    }
+  }
