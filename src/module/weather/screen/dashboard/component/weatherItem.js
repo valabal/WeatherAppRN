@@ -7,9 +7,17 @@ import {
   Image,
   TouchableWithoutFeedback,
 } from 'react-native';
+import {Divider} from '@my-component/index';
 import PropTypes, {any} from 'prop-types';
 import {Icon} from 'react-native-elements';
 import {weather} from '@my-module/weather/weatherReducers';
+
+const Styles = {
+  contentContainer: {padding: 20, flexDirection: 'row', alignItems: 'center'},
+  cityText: {flex: 1, color: 'grey', fontSize: 20},
+  iconsStyle: {width: 30, height: 30},
+  temperatureText: {marginHorizontal: 15},
+};
 
 class WeatherItem extends Component {
   constructor(props) {
@@ -38,32 +46,23 @@ class WeatherItem extends Component {
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <View>
-          <View style={{padding: 20}}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text style={{flex: 1, color: 'grey', fontSize: 20}}>
-                {cityName}
-              </Text>
-              <Image
-                style={{width: 30, height: 30}}
-                source={{
-                  uri:
-                    'https://developer.accuweather.com/sites/default/files/' +
-                    iconNumber +
-                    '-s.png',
-                }}
-              />
-              <Text style={{marginHorizontal: 15}}>
-                {metric.Value + ' ' + metric.Unit}
-              </Text>
-              <Icon name="chevron-right" size={25} color="black" />
-            </View>
+          <View style={[Styles.contentContainer]}>
+            <Text style={[Styles.cityText]}>{cityName}</Text>
+            <Image
+              style={[Styles.iconsStyle]}
+              source={{
+                uri:
+                  'https://developer.accuweather.com/sites/default/files/' +
+                  iconNumber +
+                  '-s.png',
+              }}
+            />
+            <Text style={[Styles.temperatureText]}>
+              {metric.Value + ' ' + metric.Unit}
+            </Text>
+            <Icon name="chevron-right" size={25} color="black" />
           </View>
-          <View
-            style={{
-              borderBottomColor: 'grey',
-              borderBottomWidth: 1,
-            }}
-          />
+          <Divider />
         </View>
       </TouchableWithoutFeedback>
     );

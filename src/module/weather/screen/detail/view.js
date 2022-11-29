@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, SafeAreaView, FlatList, Image} from 'react-native';
 import PropTypes, {any} from 'prop-types';
-import {WeatherDayItem, WeatherTimeItem} from './component';
-
-const renderHistory = ({item}) => <WeatherDayItem item={item} />;
-
-const renderForecast = ({item}) => <WeatherTimeItem item={item} />;
+import {WeatherDayItem, WeatherTimeItem, WeatherError} from './component';
+import {Divider, WeatherIcon, TemperatureLabel} from '@my-component/index';
+import Styles from './style';
 
 class WeatherDetail extends Component {
   constructor(props) {
@@ -31,21 +29,12 @@ class WeatherDetail extends Component {
   renderHistoryList() {
     const {weatherHistory, isHistoryFetch, historyError} = this.props;
     if (historyError.length > 0) {
-      return (
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            flex: 1,
-          }}>
-          <Text style={{textAlign: 'center'}}>{historyError}</Text>
-        </View>
-      );
+      return <WeatherError error={historyError} />;
     }
     return (
       <FlatList
         data={weatherHistory}
-        renderItem={renderHistory}
+        renderItem={({item}) => <WeatherDayItem item={item} />}
         keyExtractor={(item) => item.EpochTime}
       />
     );
@@ -54,31 +43,14 @@ class WeatherDetail extends Component {
   renderForecastList() {
     const {weatherForecast, isForecastFetch, forecastError} = this.props;
     if (forecastError.length > 0) {
-      return (
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            flex: 1,
-          }}>
-          <Text style={{textAlign: 'center'}}>{forecastError}</Text>
-        </View>
-      );
+      return <WeatherError error={forecastError} />;
     }
     return (
       <FlatList
         data={weatherForecast}
-        renderItem={renderForecast}
+        renderItem={({item}) => <WeatherTimeItem item={item} />}
         horizontal={true}
         keyExtractor={(item) => item.EpochTime}
-      />
-    );
-  }
-
-  divider() {
-    return (
-      <View
-        style={{height: 1, borderBottomColor: 'black', borderBottomWidth: 1}}
       />
     );
   }
@@ -86,53 +58,32 @@ class WeatherDetail extends Component {
   header({weatherData, cityNames}) {
     const cityName = weatherData?.EnglishName ?? cityNames;
 
-    let content = (
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: 100,
-        }}>
+    const emptyData = (
+      <View style={([Styles.headerContainer], {height: 100})}>
         <Text style={{textAlign: 'center'}}>Unidentified</Text>
       </View>
     );
 
+    let content = emptyData;
     if (weatherData) {
-      const icon = weatherData?.WeatherIcon;
       const metric = weatherData?.Temperature?.Metric;
-      const iconNumber = icon?.toString().padStart(2, '0');
-
       content = (
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image
-            style={{width: 50, height: 50}}
-            source={{
-              uri:
-                'https://developer.accuweather.com/sites/default/files/' +
-                iconNumber +
-                '-s.png',
-            }}
+        <View style={[Styles.headerContainer, {justifyContent: 'center'}]}>
+          <WeatherIcon
+            style={[Styles.weatherIcon]}
+            icon={weatherData?.WeatherIcon}
           />
-          <Text style={{marginHorizontal: 15, fontSize: 25}}>
-            {(metric?.Value ?? '') + ' ' + (metric?.Unit ?? '')}
-          </Text>
+          <TemperatureLabel style={[Styles.temperatureText]} metric={metric} />
         </View>
       );
     }
 
     return (
       <View>
-        <View style={{paddingHorizontal: 20, paddingVertical: 10}}>
-          <Text style={{fontSize: 30}}>{cityName}</Text>
+        <View style={[Styles.headerSubContainer]}>
+          <Text style={[Styles.headerCityLabel]}>{cityName}</Text>
         </View>
-        <View style={{paddingHorizontal: 20, paddingVertical: 15}}>
-          {content}
-        </View>
+        <View style={[Styles.headerSubContainer]}>{content}</View>
       </View>
     );
   }
@@ -152,9 +103,11 @@ class WeatherDetail extends Component {
     return (
       <SafeAreaView style={{flex: 1}}>
         {this.header({weatherData, cityNames})}
-        {this.divider()}
-        <View style={{height: 100}}>{this.renderForecastList()}</View>
-        {this.divider()}
+        <Divider />
+        <View style={[Styles.forecastContainer]}>
+          {this.renderForecastList()}
+        </View>
+        <Divider />
         <View style={{flex: 1}}>{this.renderHistoryList()}</View>
       </SafeAreaView>
     );

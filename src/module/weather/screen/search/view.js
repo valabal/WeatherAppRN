@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import PropTypes, {any} from 'prop-types';
 import {Icon} from 'react-native-elements';
-import FloatingLabelInput from '@my-component/FloatingTextInput';
 import useDebounce from '@my-util/hook';
 import {SearchResultCell} from './component';
+import Styles from './style';
 
 export default function SearchPage({
   navigation,
@@ -40,19 +40,13 @@ export default function SearchPage({
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{paddingHorizontal: 20, paddingVertical: 10}}>
-        <Text style={{fontSize: 30}}>Search City</Text>
+      <View style={Styles.container}>
+        <Text style={Styles.titleLabel}>Search City</Text>
       </View>
-      <View style={{paddingHorizontal: 20}}>
+      <View style={Styles.textInputContainer}>
         <TextInput
           placeholder="Input City Name"
-          style={{
-            height: 26,
-            fontSize: 20,
-            color: '#000',
-            borderBottomWidth: 1,
-            borderBottomColor: '#555',
-          }}
+          style={Styles.texInputStyle}
           onChangeText={onChangeText}
           value={cityName}
         />

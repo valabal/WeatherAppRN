@@ -3,6 +3,14 @@ import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
 import PropTypes, {any} from 'prop-types';
 import {Icon} from 'react-native-elements';
 import moment from 'moment';
+import {Divider} from '@my-component/index';
+
+const Styles = {
+  mainContainer: {paddingHorizontal: 20, paddingVertical: 15},
+  titleContainer: {flexDirection: 'row', alignItems: 'center'},
+  title: {flex: 1, color: '#777', fontSize: 15},
+  icon: {size: 25, color: '#000'},
+};
 
 class SearchResultCell extends Component {
   constructor(props) {
@@ -20,24 +28,20 @@ class SearchResultCell extends Component {
 
   render() {
     const {item} = this.props;
-    console.log(item);
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <View>
-          <View style={{paddingHorizontal: 20, paddingVertical: 15}}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text style={{flex: 1, color: 'grey', fontSize: 15}}>
-                {item.LocalizedName}
-              </Text>
-              <Icon name="chevron-right" size={25} color="black" />
+          <View style={Styles.mainContainer}>
+            <View style={Styles.titleContainer}>
+              <Text style={Styles.title}>{item.LocalizedName}</Text>
+              <Icon
+                name="chevron-right"
+                size={Styles.icon.size}
+                color={Styles.icon.color}
+              />
             </View>
           </View>
-          <View
-            style={{
-              borderBottomColor: 'grey',
-              borderBottomWidth: 1,
-            }}
-          />
+          <Divider />
         </View>
       </TouchableWithoutFeedback>
     );

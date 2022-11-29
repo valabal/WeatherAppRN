@@ -36,8 +36,6 @@ function* getWeatherList() {
 function* getWeatherForecast(params) {
   try {
     const response = yield call(API.getWeatherForecast, {...params.payload});
-    console.log('FORECAST BERKATA');
-    console.log(response.data);
     switch (response.status) {
       case RESPONSE_STATUS.SUCCESS:
         yield put(ACTION.getWeatherForecastSuccess(response.data));
@@ -53,7 +51,6 @@ function* getWeatherForecast(params) {
       console.log(error.response.status);
       console.log(error.response.headers);
     }
-
     yield put(setErrorMessage(error.message));
   }
 }
@@ -83,7 +80,6 @@ function* getWeatherHistory(params) {
 function* getWeatherCity(params) {
   try {
     const response = yield call(API.searchByLocApi, {...params.payload});
-    console.log(response);
     switch (response.status) {
       case RESPONSE_STATUS.SUCCESS:
         yield put(ACTION.getWeatherCitySuccess(response.data));
