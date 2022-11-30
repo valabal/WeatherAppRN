@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {Image} from 'react-native';
 
-export default WeatherIcon = (props) => {
+export default (props) => {
   const iconNumber = props.icon?.toString().padStart(2, '0');
   const style = props.style;
   const url =

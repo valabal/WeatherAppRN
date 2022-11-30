@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text} from 'react-native';
 import PropTypes, {any} from 'prop-types';
-import {Icon} from 'react-native-elements';
 import moment from 'moment';
 import {TemperatureLabel, WeatherIcon} from '@my-component/index';
-
-const Spacer = () => <View style={{height: 10}} />;
 
 const Styles = {
   mainContainer: {alignItems: 'center', width: 60, paddingTop: 10},
   timeStyle: {color: '#777'},
   weatherIcon: {width: 30, height: 30},
+  spacer: {height: 10},
 };
+
+const Spacer = () => <View style={Styles.spacer} />;
 
 class WeatherTimeItem extends Component {
   constructor(props) {

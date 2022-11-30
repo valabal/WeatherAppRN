@@ -1,16 +1,8 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  Image,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
 import {Divider} from '@my-component/index';
 import PropTypes, {any} from 'prop-types';
 import {Icon} from 'react-native-elements';
-import {weather} from '@my-module/weather/weatherReducers';
 
 const Styles = {
   contentContainer: {padding: 20, flexDirection: 'row', alignItems: 'center'},
@@ -35,7 +27,6 @@ class WeatherItem extends Component {
 
   render() {
     const {
-      weather,
       weather: {EnglishName: cityName},
       weather: {WeatherIcon},
       weather: {

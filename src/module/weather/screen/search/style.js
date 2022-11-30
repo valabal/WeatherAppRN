@@ -1,5 +1,6 @@
 export default {
   container: {paddingHorizontal: 20, paddingVertical: 10},
+  singleFlex: {flex: 1},
   titleLabel: {fontSize: 30},
   textInputContainer: {paddingHorizontal: 20},
   texInputStyle: {

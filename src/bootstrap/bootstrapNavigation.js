@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommonActions } from '@react-navigation/native';
+import {CommonActions} from '@react-navigation/native';
 
 export const navigationRef = React.createRef();
 
@@ -11,8 +11,8 @@ export function resetStack(routeName, params) {
   navigationRef.current?.dispatch(
     CommonActions.reset({
       index: 0,
-      routes: [{ name: routeName }],
-    })
+      routes: [{name: routeName}],
+    }),
   );
   navigationRef.current?.navigate(routeName, params);
 }

@@ -1,15 +1,6 @@
-import React, {Component, useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  Image,
-  TextInput,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import PropTypes, {any} from 'prop-types';
-import {Icon} from 'react-native-elements';
+import React, {useState, useEffect} from 'react';
+import {View, Text, SafeAreaView, FlatList, TextInput} from 'react-native';
+import PropTypes from 'prop-types';
 import useDebounce from '@my-util/hook';
 import {SearchResultCell} from './component';
 import Styles from './style';
@@ -28,18 +19,18 @@ export default function SearchPage({
     if (debouncedSearchTerm) {
       getCity(debouncedSearchTerm);
     }
-  }, [debouncedSearchTerm]);
+  }, [getCity, debouncedSearchTerm]);
 
   useEffect(() => {
     refreshCity();
-  }, []);
+  }, [refreshCity]);
 
   const renderItem = ({item}) => (
     <SearchResultCell item={item} navigation={navigation} />
   );
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={Styles.singleFlex}>
       <View style={Styles.container}>
         <Text style={Styles.titleLabel}>Search City</Text>
       </View>
@@ -51,7 +42,7 @@ export default function SearchPage({
           value={cityName}
         />
       </View>
-      <View style={{flex: 1}}>
+      <View style={Styles.singleFlex}>
         <FlatList
           data={cityList}
           renderItem={renderItem}

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import * as CONST from '@my-module/alert/alertConstant';
 
 const initialState = {

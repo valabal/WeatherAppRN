@@ -1,19 +1,9 @@
 import React, {Component} from 'react';
-import {
-  AppState,
-  View,
-  ActivityIndicator,
-  Appearance,
-  Alert,
-  Text,
-  Button,
-} from 'react-native';
+import {AppState, View, Alert} from 'react-native';
 import {setJSExceptionHandler} from 'react-native-exception-handler';
 
 import PropTypes from 'prop-types';
 import Styles from './style';
-import {weather} from '@my-module/weather/weatherReducers';
-
 import {WarningSign} from '@my-component/index';
 
 const errorHandler = (e, isFatal) => {

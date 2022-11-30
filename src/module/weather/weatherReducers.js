@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import * as CONST from '@my-module/weather/weatherConstant';
 import * as STATE from '@my-module/weather/weatherStates';
 

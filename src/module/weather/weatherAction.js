@@ -56,7 +56,10 @@ export const getWeatherCityFailed = (payload) => ({
   type: CONST.GET_WEATHER_CITY_FAILED,
   payload,
 });
-export const resetWeatherCity = (payload) => ({
-  type: CONST.GET_WEATHER_CITY_RESET,
-  payload,
-});
+export const resetWeatherCity = (payload) => {
+  console.log('RESET WEATHER');
+  return {
+    type: CONST.GET_WEATHER_CITY_RESET,
+    payload,
+  };
+};

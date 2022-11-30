@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, Image, TextInput, TouchableWithoutFeedback} from 'react-native';
+import React from 'react';
+import {View, TextInput, TouchableWithoutFeedback} from 'react-native';
 import {Icon} from 'react-native-elements';
 
 const Styles = {
@@ -17,7 +17,7 @@ const Styles = {
   iconStyle: {size: 25, color: '#000'},
 };
 
-export default SearchField = (navigate) => {
+export default (navigate) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => {

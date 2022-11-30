@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, SafeAreaView, FlatList, Image} from 'react-native';
-import PropTypes, {any} from 'prop-types';
+import {View, Text, SafeAreaView, FlatList} from 'react-native';
+import PropTypes from 'prop-types';
 import {WeatherDayItem, WeatherTimeItem, WeatherError} from './component';
 import {Divider, WeatherIcon, TemperatureLabel} from '@my-component/index';
 import Styles from './style';
@@ -27,7 +27,7 @@ class WeatherDetail extends Component {
   }
 
   renderHistoryList() {
-    const {weatherHistory, isHistoryFetch, historyError} = this.props;
+    const {weatherHistory, historyError} = this.props;
     if (historyError.length > 0) {
       return <WeatherError error={historyError} />;
     }
@@ -35,13 +35,16 @@ class WeatherDetail extends Component {
       <FlatList
         data={weatherHistory}
         renderItem={({item}) => <WeatherDayItem item={item} />}
-        keyExtractor={(item) => item.EpochTime}
+        keyExtractor={(item) => {
+          console.log(item);
+          return item.EpochTime;
+        }}
       />
     );
   }
 
   renderForecastList() {
-    const {weatherForecast, isForecastFetch, forecastError} = this.props;
+    const {weatherForecast, forecastError} = this.props;
     if (forecastError.length > 0) {
       return <WeatherError error={forecastError} />;
     }
@@ -60,7 +63,7 @@ class WeatherDetail extends Component {
 
     const emptyData = (
       <View style={([Styles.headerContainer], {height: 100})}>
-        <Text style={{textAlign: 'center'}}>Unidentified</Text>
+        <Text style={Styles.unidentifiedLabel}>Unidentified</Text>
       </View>
     );
 
@@ -68,7 +71,7 @@ class WeatherDetail extends Component {
     if (weatherData) {
       const metric = weatherData?.Temperature?.Metric;
       content = (
-        <View style={[Styles.headerContainer, {justifyContent: 'center'}]}>
+        <View style={[Styles.headerContainer, Styles.justifyContent]}>
           <WeatherIcon
             style={[Styles.weatherIcon]}
             icon={weatherData?.WeatherIcon}
@@ -90,10 +93,7 @@ class WeatherDetail extends Component {
 
   render() {
     const {
-      getHistory,
-      getForecast,
       weatherHistory,
-      weatherForecast,
       route: {
         params: {weather, cityNames},
       },
@@ -101,14 +101,14 @@ class WeatherDetail extends Component {
     const weatherData = weather ?? weatherHistory[0];
 
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={Styles.singleFlex}>
         {this.header({weatherData, cityNames})}
         <Divider />
         <View style={[Styles.forecastContainer]}>
           {this.renderForecastList()}
         </View>
         <Divider />
-        <View style={{flex: 1}}>{this.renderHistoryList()}</View>
+        <View style={Styles.singleFlex}>{this.renderHistoryList()}</View>
       </SafeAreaView>
     );
   }

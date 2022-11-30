@@ -1,57 +1,59 @@
 import React from 'react';
 import {View, Text, Dimensions, Button} from 'react-native';
-import PropTypes, {any} from 'prop-types';
+import PropTypes from 'prop-types';
+
+const Style = {
+  container: {
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
+    backgroundColor: '#00000080',
+    justifyContent: 'center',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+  },
+  modalContainer: {backgroundColor: '#fff', margin: 20, borderRadius: 10},
+  errorTitleStyle: {
+    fontSize: 25,
+    alignSelf: 'center',
+    color: '#f00',
+    padding: 10,
+  },
+  modalContent: {
+    height: 100,
+    justifyContent: 'center',
+    padding: 10,
+    marginTop: -20,
+  },
+  alertWarningLabelStyle: {
+    fontSize: 15,
+    alignSelf: 'center',
+  },
+  alertButtonStyle: {padding: 10},
+};
 
 export default function WarningSign(props) {
   if (!props.alertWarning) {
     return <View />;
   }
   return (
-    <View
-      style={{
-        height: Dimensions.get('window').height,
-        width: Dimensions.get('window').width,
-        backgroundColor: '#00000080',
-        justifyContent: 'center',
-        position: 'absolute',
-        left: 0,
-        top: 0,
-      }}>
-      <View style={{backgroundColor: '#fff', margin: 20, borderRadius: 10}}>
-        <Text
-          style={{
-            fontSize: 25,
-            alignSelf: 'center',
-            color: '#f00',
-            padding: 10,
-          }}>
-          ERROR
-        </Text>
-        <View
-          style={{
-            height: 100,
-            justifyContent: 'center',
-            padding: 10,
-            marginTop: -20,
-          }}>
-          <Text
-            style={{
-              fontSize: 15,
-              alignSelf: 'center',
-            }}>
-            {props.alertWarning}
-          </Text>
+    <View style={Style.container}>
+      <View style={Style.modalContainer}>
+        <Text style={Style.errorTitleStyle}>ERROR</Text>
+        <View style={Style.modalContent}>
+          <Text style={Style.alertWarningLabelStyle}>{props.alertWarning}</Text>
         </View>
         <Button
           title="OK"
           onPress={props.onPress}
-          style={{padding: 10}}></Button>
+          style={Style.alertButtonStyle}
+        />
       </View>
     </View>
   );
 }
 
 WarningSign.propTypes = {
-  alertWarning: PropTypes.objectOf(String),
+  alertWarning: PropTypes.any,
   onPress: PropTypes.func.isRequired,
 };

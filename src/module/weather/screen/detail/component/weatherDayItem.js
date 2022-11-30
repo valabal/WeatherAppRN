@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text} from 'react-native';
 import PropTypes, {any} from 'prop-types';
-import {Icon} from 'react-native-elements';
 import moment from 'moment';
 import {TemperatureLabel, WeatherIcon, Divider} from '@my-component/index';
 

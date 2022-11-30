@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
 
-export default TemperatureLabel = (props) => {
+export default (props) => {
   const {metric, style} = props;
   const value =
     metric?.Value && metric?.Unit

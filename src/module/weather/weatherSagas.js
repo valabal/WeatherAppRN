@@ -1,4 +1,4 @@
-import {takeLatest, put, call, select} from 'redux-saga/effects';
+import {takeLatest, put, call} from 'redux-saga/effects';
 import {RESPONSE_STATUS} from '@my-util/constant';
 import {
   GET_WEATHER_CITY_REQ,
@@ -9,7 +9,6 @@ import {
 import * as ACTION from './weatherAction';
 import {setErrorMessage} from '@my-module/alert/alertAction';
 import * as API from './weatherApi';
-import _ from 'lodash';
 
 function* getWeatherList() {
   try {

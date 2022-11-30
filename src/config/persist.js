@@ -1,6 +1,6 @@
-import { AsyncStorage } from 'react-native';
-import { encryptTransform } from 'redux-persist-transform-encrypt';
-import { createBlacklistFilter } from 'redux-persist-transform-filter';
+import {AsyncStorage} from 'react-native';
+import {encryptTransform} from 'redux-persist-transform-encrypt';
+import {createBlacklistFilter} from 'redux-persist-transform-filter';
 
 const encryptor = encryptTransform({
   secretKey: 'shioping-super-secret-key',
