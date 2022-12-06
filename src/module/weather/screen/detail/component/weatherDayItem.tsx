@@ -3,10 +3,11 @@ import {View, Text, StyleSheet} from 'react-native';
 import moment from 'moment';
 import {TemperatureLabel, WeatherIcon, Divider} from '@my-component/index';
 import {WeatherDayObject} from '@my-module/weather/weatherTypes';
+import {ColorPalete} from '@my-config/color';
 
 const Styles = StyleSheet.create({
   mainContainer: {padding: 20, flexDirection: 'row', alignItems: 'center'},
-  timeTextStyle: {flex: 1, color: '#777', fontSize: 20},
+  timeTextStyle: {flex: 1, color: ColorPalete.text.lightgray, fontSize: 20},
   weatherIconStyle: {width: 20, height: 20},
   temperatureStyle: {marginHorizontal: 15},
 });

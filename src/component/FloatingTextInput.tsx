@@ -1,3 +1,4 @@
+import {ColorPalete} from '@my-config/color';
 import React, {Component} from 'react';
 import {View, TextInput, Animated, StyleSheet} from 'react-native';
 
@@ -6,9 +7,9 @@ const Style = StyleSheet.create({
   textInput: {
     height: 26,
     fontSize: 20,
-    color: '#000',
+    color: ColorPalete.text.black,
     borderBottomWidth: 1,
-    borderBottomColor: '#555',
+    borderBottomColor: ColorPalete.border.primary,
   },
 });
 
@@ -55,7 +56,7 @@ class FloatingLabelInput extends Component<Props> {
       }),
       color: this._animatedIsFocused.interpolate({
         inputRange: [0, 1],
-        outputRange: ['#aaa', '#000'],
+        outputRange: [ColorPalete.text.gray, ColorPalete.text.black],
       }),
     };
     return (

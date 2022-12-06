@@ -2,22 +2,27 @@ import React from 'react';
 import {View, Text, Dimensions, Button, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {TouchableHighlight} from 'react-native-gesture-handler';
+import {ColorPalete} from '@my-config/color';
 
 const Style = StyleSheet.create({
   container: {
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width,
-    backgroundColor: '#00000080',
+    backgroundColor: ColorPalete.modal.background,
     justifyContent: 'center',
     position: 'absolute',
     left: 0,
     top: 0,
   },
-  modalContainer: {backgroundColor: '#fff', margin: 20, borderRadius: 10},
+  modalContainer: {
+    backgroundColor: ColorPalete.modal.content,
+    margin: 20,
+    borderRadius: 10,
+  },
   errorTitleStyle: {
     fontSize: 25,
     alignSelf: 'center',
-    color: '#f00',
+    color: ColorPalete.text.red,
     padding: 10,
   },
   modalContent: {

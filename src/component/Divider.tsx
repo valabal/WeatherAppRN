@@ -1,8 +1,13 @@
+import {ColorPalete} from '@my-config/color';
 import React, {Component} from 'react';
 import {View} from 'react-native';
 
 const Style = {
-  divider: {height: 1, borderBottomColor: '#ccc', borderBottomWidth: 1},
+  divider: {
+    height: 1,
+    borderBottomColor: ColorPalete.border.secondary,
+    borderBottomWidth: 1,
+  },
 };
 
 class Divider extends Component {

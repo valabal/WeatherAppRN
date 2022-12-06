@@ -4,10 +4,11 @@ import moment from 'moment';
 import {TemperatureLabel, WeatherIcon} from '@my-component/index';
 import {StyleSheet} from 'react-native';
 import {WeatherTimeObject} from '@my-module/weather/weatherTypes';
+import {ColorPalete} from '@my-config/color';
 
 const Styles = StyleSheet.create({
   mainContainer: {alignItems: 'center', width: 60, paddingTop: 10},
-  timeStyle: {color: '#777'},
+  timeStyle: {color: ColorPalete.text.lightgray},
   weatherIcon: {width: 30, height: 30},
   spacer: {height: 10},
 });

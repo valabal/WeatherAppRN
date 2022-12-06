@@ -1,3 +1,4 @@
+import {ColorPalete} from '@my-config/color';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
@@ -8,8 +9,8 @@ export default StyleSheet.create({
   texInputStyle: {
     height: 26,
     fontSize: 20,
-    color: '#000',
+    color: ColorPalete.text.black,
     borderBottomWidth: 1,
-    borderBottomColor: '#555',
+    borderBottomColor: ColorPalete.border.primary,
   },
 });

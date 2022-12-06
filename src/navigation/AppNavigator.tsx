@@ -12,6 +12,7 @@ import {navigationRef} from '@my-bootstrap/bootstrapNavigation';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Dashboard, WeatherDetail, SearchPage} from '@my-module/weather/screen';
 import MyIcon from '@my-component/MyIcon';
+import {ColorPalete} from '@my-config/color';
 
 const Stack = createStackNavigator();
 
@@ -47,9 +48,9 @@ function AppNavigator() {
             gestureEnabled: true,
             gestureDirection: 'horizontal',
             headerStyle: {
-              backgroundColor: '#5DA7DB',
+              backgroundColor: ColorPalete.navigation.navBar,
             },
-            headerTintColor: '#fff',
+            headerTintColor: ColorPalete.navigation.labelTint,
             headerBackTitleVisible: false,
             headerLeftContainerStyle: {padding: 5},
             headerLeft: () => (
@@ -58,7 +59,11 @@ function AppNavigator() {
                   const popAction = StackActions.pop(1);
                   navigationRef?.current?.dispatch(popAction);
                 }}>
-                <MyIcon name="chevron-left" size={30} color="#fff" />
+                <MyIcon
+                  name="chevron-left"
+                  size={30}
+                  color={ColorPalete.icon.white}
+                />
               </TouchableHighlight>
             ),
           }}>

@@ -1,4 +1,5 @@
 import MyIcon from '@my-component/MyIcon';
+import {ColorPalete} from '@my-config/color';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {
@@ -10,7 +11,7 @@ import {
 
 const Styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ccc',
+    backgroundColor: ColorPalete.main.gray,
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderRadius: 10,
@@ -35,10 +36,10 @@ export default (props: Props) => {
         <TextInput
           style={[Styles.textInput]}
           placeholder="Search Weather By City name"
-          placeholderTextColor={'#00f'}
+          placeholderTextColor={ColorPalete.text.blue}
           editable={false}
         />
-        <MyIcon name="search" size={25} color={'#000'} />
+        <MyIcon name="search" size={25} color={ColorPalete.icon.black} />
       </View>
     </TouchableWithoutFeedback>
   );

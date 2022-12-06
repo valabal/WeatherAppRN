@@ -71,7 +71,6 @@ class WeatherDetail extends Component<Props> {
         data={weatherHistory}
         renderItem={({item}) => <WeatherDayItem item={item} />}
         keyExtractor={(item) => {
-          console.log(item.EpochTime?.toString() ?? '' + createRandomNumber());
           return item.EpochTime?.toString() ?? '' + createRandomNumber();
         }}
       />

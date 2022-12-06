@@ -1,3 +1,4 @@
+import {ColorPalete} from '@my-config/color';
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
@@ -7,7 +8,7 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
-  errorLabelStyle: {textAlign: 'center'},
+  errorLabelStyle: {textAlign: 'center', color: ColorPalete.text.red},
 });
 
 type Props = {
