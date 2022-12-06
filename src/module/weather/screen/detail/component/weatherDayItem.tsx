@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import moment from 'moment';
 import {TemperatureLabel, WeatherIcon, Divider} from '@my-component/index';
+import {WeatherDayObject} from '@my-module/weather/weatherTypes';
 
 const Styles = StyleSheet.create({
   mainContainer: {padding: 20, flexDirection: 'row', alignItems: 'center'},
@@ -11,7 +12,7 @@ const Styles = StyleSheet.create({
 });
 
 export interface Props {
-  item: any;
+  item: WeatherDayObject;
 }
 
 class WeatherDayItem extends Component<Props> {
@@ -33,7 +34,7 @@ class WeatherDayItem extends Component<Props> {
           />
           <TemperatureLabel
             style={Styles.temperatureStyle}
-            metric={item.Temperature.Metric}
+            metric={item.Temperature?.Metric}
           />
         </View>
         <Divider />

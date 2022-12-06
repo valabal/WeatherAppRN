@@ -1,10 +1,6 @@
+import {Metric} from '@my-module/weather/weatherTypes';
 import React from 'react';
 import {StyleProp, Text, TextStyle} from 'react-native';
-
-export type Metric = {
-  Value?: number;
-  Unit?: string;
-};
 
 export type Props = {
   metric?: Metric;

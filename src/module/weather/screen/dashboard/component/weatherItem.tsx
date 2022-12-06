@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 import {Divider, MyIcon, WeatherIcon as WIcon} from '@my-component/index';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {SimpleWeatherObject} from '@my-module/weather/weatherTypes';
 
 const Styles = StyleSheet.create({
   contentContainer: {padding: 20, flexDirection: 'row', alignItems: 'center'},
@@ -12,7 +13,7 @@ const Styles = StyleSheet.create({
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
-  weather: any;
+  weather: SimpleWeatherObject;
 }
 
 class WeatherItem extends Component<Props> {
@@ -33,10 +34,8 @@ class WeatherItem extends Component<Props> {
     const {
       weather: {EnglishName: cityName},
       weather: {WeatherIcon},
-      weather: {
-        Temperature: {Metric: metric},
-      },
     } = this.props;
+    const metric = this.props.weather.Temperature?.Metric;
     return (
       <TouchableWithoutFeedback onPress={this.onPress}>
         <View>
@@ -44,7 +43,7 @@ class WeatherItem extends Component<Props> {
             <Text style={[Styles.cityText]}>{cityName}</Text>
             <WIcon style={[Styles.iconsStyle]} icon={WeatherIcon} />
             <Text style={[Styles.temperatureText]}>
-              {metric.Value + ' ' + metric.Unit}
+              {metric?.Value + ' ' + metric?.Unit}
             </Text>
             <MyIcon name="chevron-right" size={25} color="black" />
           </View>

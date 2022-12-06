@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import moment from 'moment';
 import {TemperatureLabel, WeatherIcon} from '@my-component/index';
 import {StyleSheet} from 'react-native';
+import {WeatherTimeObject} from '@my-module/weather/weatherTypes';
 
 const Styles = StyleSheet.create({
   mainContainer: {alignItems: 'center', width: 60, paddingTop: 10},
@@ -14,7 +15,7 @@ const Styles = StyleSheet.create({
 const Spacer = () => <View style={Styles.spacer} />;
 
 export interface Props {
-  item: any;
+  item: WeatherTimeObject;
 }
 
 class WeatherTimeItem extends Component<Props> {

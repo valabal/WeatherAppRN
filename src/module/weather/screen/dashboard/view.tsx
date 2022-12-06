@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
-import {View, Text, SafeAreaView, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  FlatList,
+  ListRenderItemInfo,
+} from 'react-native';
 import Styles from './style';
 import {WeatherItem, SearchField} from './component';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {SimpleWeatherObject} from '@my-module/weather/weatherTypes';
+import createRandomNumber from '@my-util/random';
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
   getWeatherList: Function;
-  weatherList: Array<any>;
+  weatherList: Array<SimpleWeatherObject>;
   weatherParams?: any;
   isFetch: boolean;
   error?: string;
@@ -20,7 +28,7 @@ class Dashboard extends Component<Props> {
     this.renderItem = this.renderItem.bind(this);
   }
 
-  renderItem({item}: any) {
+  renderItem({item}: ListRenderItemInfo<SimpleWeatherObject>) {
     const {navigation} = this.props;
     return <WeatherItem navigation={navigation} weather={item} />;
   }
@@ -42,7 +50,7 @@ class Dashboard extends Component<Props> {
           <FlatList
             data={weatherList}
             renderItem={this.renderItem}
-            keyExtractor={(item) => item.Key}
+            keyExtractor={(item) => item.Key + createRandomNumber()}
           />
         </View>
       </SafeAreaView>

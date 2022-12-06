@@ -3,6 +3,7 @@ import {View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 
 import {Divider, MyIcon} from '@my-component/index';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {CitySearchWeatherObject} from '@my-module/weather/weatherTypes';
 
 const Styles = StyleSheet.create({
   mainContainer: {paddingHorizontal: 20, paddingVertical: 15},
@@ -12,7 +13,7 @@ const Styles = StyleSheet.create({
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
-  item: any;
+  item: CitySearchWeatherObject;
 }
 
 class SearchResultCell extends Component<Props> {

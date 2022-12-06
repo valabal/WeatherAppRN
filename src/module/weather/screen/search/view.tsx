@@ -1,14 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, SafeAreaView, FlatList, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  FlatList,
+  TextInput,
+  ListRenderItemInfo,
+} from 'react-native';
 import useDebounce from '@my-util/hook';
 import {SearchResultCell} from './component';
 import Styles from './style';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {CitySearchWeatherObject} from '@my-module/weather/weatherTypes';
+import createRandomNumber from '@my-util/random';
 
 export type Props = {
   navigation: StackNavigationProp<any, any>;
   getCity: Function;
-  cityList: Array<any>;
+  cityList: Array<CitySearchWeatherObject>;
   refreshCity: Function;
 };
 
@@ -29,7 +38,7 @@ export default function SearchPage(props: Props) {
     refreshCity();
   }, [refreshCity]);
 
-  const renderItem = ({item}: any) => (
+  const renderItem = ({item}: ListRenderItemInfo<CitySearchWeatherObject>) => (
     <SearchResultCell item={item} navigation={navigation} />
   );
 
@@ -50,7 +59,7 @@ export default function SearchPage(props: Props) {
         <FlatList
           data={cityList}
           renderItem={renderItem}
-          keyExtractor={(item) => item.Key}
+          keyExtractor={(item) => item.Key + createRandomNumber()}
         />
       </View>
     </SafeAreaView>

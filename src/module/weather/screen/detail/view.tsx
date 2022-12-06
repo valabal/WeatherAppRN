@@ -4,15 +4,21 @@ import {WeatherDayItem, WeatherTimeItem, WeatherError} from './component';
 import {Divider, WeatherIcon, TemperatureLabel} from '@my-component/index';
 import Styles from './style';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {
+  SimpleWeatherObject,
+  WeatherDayObject,
+  WeatherTimeObject,
+} from '@my-module/weather/weatherTypes';
+import createRandomNumber from '@my-util/random';
 
 type Params = {
   cityId?: string;
-  weather?: string;
+  weather?: SimpleWeatherObject;
   cityNames?: string;
 };
 
 type HeaderContent = {
-  weatherData?: any;
+  weatherData?: SimpleWeatherObject;
   cityNames?: string;
 };
 
@@ -24,11 +30,11 @@ export interface Props {
   navigation: StackNavigationProp<any, any>;
   route: Routes;
   getHistory: Function;
-  weatherHistory: Array<any>;
+  weatherHistory: Array<WeatherDayObject>;
   isHistoryFetch: boolean;
   historyError?: any;
   getForecast: Function;
-  weatherForecast: Array<any>;
+  weatherForecast: Array<WeatherTimeObject>;
   isForecastFetch: boolean;
   forecastError?: any;
   resetWeatherDetailPage: Function;
@@ -65,8 +71,7 @@ class WeatherDetail extends Component<Props> {
         data={weatherHistory}
         renderItem={({item}) => <WeatherDayItem item={item} />}
         keyExtractor={(item) => {
-          console.log(item);
-          return item.EpochTime;
+          return item.EpochTime?.toString() ?? '' + createRandomNumber();
         }}
       />
     );
@@ -82,7 +87,9 @@ class WeatherDetail extends Component<Props> {
         data={weatherForecast}
         renderItem={({item}) => <WeatherTimeItem item={item} />}
         horizontal={true}
-        keyExtractor={(item) => item.EpochTime}
+        keyExtractor={(item) =>
+          item.EpochTime?.toString() ?? '' + createRandomNumber()
+        }
       />
     );
   }
