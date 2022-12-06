@@ -1,13 +1,22 @@
 import * as CONST from '@my-module/alert/alertConstant';
 import {Action} from '@my-util/types';
 
-const initialState = {
+interface AlertStateModel {
+  message: string;
+}
+
+const initialState: AlertStateModel = {
   message: '',
 };
 
-export const alert = (state = initialState, action: Action) => {
+type AlertActionCallback = () => AlertStateModel;
+
+export const alert = (
+  state: AlertStateModel = initialState,
+  action: Action,
+) => {
   const {payload, type} = action;
-  const actions: {[key: string]: any} = {
+  const actions: {[key: string]: AlertActionCallback} = {
     [CONST.SET_ERROR_MESSAGE]: () => ({
       message: payload as string,
     }),

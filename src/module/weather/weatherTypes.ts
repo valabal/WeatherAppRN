@@ -36,5 +36,5 @@ export type WeatherTimeObject = {
   DateTime?: string;
   WeatherIcon?: string;
   Temperature?: Metric;
-  EpochTime?: number;
+  EpochDateTime?: number;
 };

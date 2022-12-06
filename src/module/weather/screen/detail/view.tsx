@@ -71,6 +71,7 @@ class WeatherDetail extends Component<Props> {
         data={weatherHistory}
         renderItem={({item}) => <WeatherDayItem item={item} />}
         keyExtractor={(item) => {
+          console.log(item.EpochTime?.toString() ?? '' + createRandomNumber());
           return item.EpochTime?.toString() ?? '' + createRandomNumber();
         }}
       />
@@ -87,9 +88,9 @@ class WeatherDetail extends Component<Props> {
         data={weatherForecast}
         renderItem={({item}) => <WeatherTimeItem item={item} />}
         horizontal={true}
-        keyExtractor={(item) =>
-          item.EpochTime?.toString() ?? '' + createRandomNumber()
-        }
+        keyExtractor={(item) => {
+          return item.EpochDateTime?.toString() ?? '' + createRandomNumber();
+        }}
       />
     );
   }

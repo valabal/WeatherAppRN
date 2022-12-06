@@ -2,16 +2,25 @@ import * as CONST from '@my-module/weather/weatherConstant';
 import * as STATE from '@my-module/weather/weatherStates';
 import {Action} from '@my-util/types';
 
-const weatherInitialState = {
+type WeatherStateModel = STATE.GetWeatherListStateType &
+  STATE.GetWeatherHistoryStateType &
+  STATE.GetWeatherForecastStateType &
+  STATE.GetWeatherCityStateType;
+
+const weatherInitialState: WeatherStateModel = {
   ...STATE.getWeatherListInitialState,
   ...STATE.getWeatherForecastInitialState,
   ...STATE.getWeatherHistoryInitialState,
   ...STATE.getWeatherCityInitialState,
 };
+type WeatherActionCallback = () => WeatherStateModel;
 
-export const weather = (state = weatherInitialState, action: Action) => {
+export const weather = (
+  state: WeatherStateModel = weatherInitialState,
+  action: Action,
+) => {
   const {payload, type} = action;
-  const actions: {[key: string]: any} = {
+  const actions: {[key: string]: WeatherActionCallback} = {
     [CONST.GET_WEATHER_LIST_REQ]: () => ({
       ...state,
       getWeatherListFetch: true,

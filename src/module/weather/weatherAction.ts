@@ -1,11 +1,18 @@
-import {CityInput, SearchInput} from './weatherTypes';
+import {
+  CityInput,
+  CitySearchWeatherObject,
+  SearchInput,
+  SimpleWeatherObject,
+  WeatherDayObject,
+  WeatherTimeObject,
+} from './weatherTypes';
 import * as CONST from './weatherConstant';
 
 export const getWeatherList = (payload?: String) => ({
   type: CONST.GET_WEATHER_LIST_REQ,
   payload,
 });
-export const getWeatherListSuccess = (payload: Array<any>) => ({
+export const getWeatherListSuccess = (payload: Array<SimpleWeatherObject>) => ({
   type: CONST.GET_WEATHER_LIST_SUCCESS,
   payload,
 });
@@ -18,7 +25,9 @@ export const getWeatherForecast = (payload?: CityInput) => ({
   type: CONST.GET_WEATHER_FORECAST_REQ,
   payload,
 });
-export const getWeatherForecastSuccess = (payload: Array<any>) => ({
+export const getWeatherForecastSuccess = (
+  payload: Array<WeatherTimeObject>,
+) => ({
   type: CONST.GET_WEATHER_FORECAST_SUCCESS,
   payload,
 });
@@ -31,7 +40,7 @@ export const getWeatherHistory = (payload?: CityInput) => ({
   type: CONST.GET_WEATHER_HISTORY_REQ,
   payload,
 });
-export const getWeatherHistorySuccess = (payload: Array<any>) => ({
+export const getWeatherHistorySuccess = (payload: Array<WeatherDayObject>) => ({
   type: CONST.GET_WEATHER_HISTORY_SUCCESS,
   payload,
 });
@@ -49,7 +58,9 @@ export const getWeatherCity = (payload?: SearchInput) => ({
   type: CONST.GET_WEATHER_CITY_REQ,
   payload,
 });
-export const getWeatherCitySuccess = (payload?: Array<any>) => ({
+export const getWeatherCitySuccess = (
+  payload?: Array<CitySearchWeatherObject>,
+) => ({
   type: CONST.GET_WEATHER_CITY_SUCCESS,
   payload,
 });
