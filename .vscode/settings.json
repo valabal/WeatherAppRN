@@ -1,5 +1,7 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
     "prettier.jsxSingleQuote": true,
-    "editor.snippetSuggestions": "top"
+    "editor.snippetSuggestions": "top",
+    "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }
