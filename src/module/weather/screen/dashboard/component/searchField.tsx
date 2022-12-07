@@ -1,5 +1,6 @@
 import MyIcon from '@my-component/MyIcon';
 import {ColorPalete} from '@my-config/color';
+import {strings} from '@my-config/string';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {
@@ -35,7 +36,7 @@ export default (props: Props) => {
       <View style={Styles.container}>
         <TextInput
           style={[Styles.textInput]}
-          placeholder="Search Weather By City name"
+          placeholder={strings.searchPlaceholder}
           placeholderTextColor={ColorPalete.text.blue}
           editable={false}
         />

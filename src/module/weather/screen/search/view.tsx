@@ -13,6 +13,7 @@ import Styles from './style';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {CitySearchWeatherObject} from '@my-module/weather/weatherTypes';
 import createRandomNumber from '@my-util/random';
+import {strings} from '@my-config/string';
 
 export type Props = {
   navigation: StackNavigationProp<any, any>;
@@ -45,11 +46,11 @@ export default function SearchPage(props: Props) {
   return (
     <SafeAreaView style={Styles.singleFlex}>
       <View style={Styles.container}>
-        <Text style={Styles.titleLabel}>Search City</Text>
+        <Text style={Styles.titleLabel}>{strings.searchTitle}</Text>
       </View>
       <View style={Styles.textInputContainer}>
         <TextInput
-          placeholder="Input City Name"
+          placeholder={strings.searchPlaceholder}
           style={Styles.texInputStyle}
           onChangeText={onChangeText}
           value={cityName}

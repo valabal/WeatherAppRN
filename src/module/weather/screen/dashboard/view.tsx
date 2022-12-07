@@ -13,6 +13,7 @@ import {SimpleWeatherObject} from '@my-module/weather/weatherTypes';
 import createRandomNumber from '@my-util/random';
 import {Image} from 'react-native-elements';
 import {WeatherIcon2} from '@my-config/image';
+import {strings} from '@my-config/string';
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
@@ -48,7 +49,7 @@ class Dashboard extends Component<Props> {
         <View style={[Styles.headerContainer]}>
           <SearchField navigation={navigation} />
           <View style={Styles.titleContainer}>
-            <Text style={[Styles.title]}>Weather App</Text>
+            <Text style={[Styles.title]}>{strings.title}</Text>
             <Image
               source={WeatherIcon2}
               style={Styles.titleIconContainer}

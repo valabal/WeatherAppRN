@@ -11,6 +11,7 @@ import {setJSExceptionHandler} from 'react-native-exception-handler';
 
 import Styles from './style';
 import {WarningSign} from '@my-component/index';
+import {strings} from '@my-config/string';
 
 export type Props = {
   style: StyleProp<ViewStyle>;
@@ -44,6 +45,8 @@ class Bootstrap extends Component<Props> {
 
   componentDidMount() {
     AppState.addEventListener('change', this.onAppStateChange);
+    //setting the language
+    strings.setLanguage('en');
   }
 
   //componentDidUpdate(prevProps: Props) {}
