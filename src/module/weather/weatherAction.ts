@@ -8,11 +8,14 @@ import {
 } from './weatherTypes';
 import * as CONST from './weatherConstant';
 
-export const getWeatherList = (payload?: String) => ({
+export const getWeatherList = (payload?: any) => ({
   type: CONST.GET_WEATHER_LIST_REQ,
   payload,
 });
-export const getWeatherListSuccess = (payload: Array<SimpleWeatherObject>) => ({
+export const getWeatherListSuccess = (payload: {
+  response: Array<SimpleWeatherObject>;
+  isRefreshed: boolean;
+}) => ({
   type: CONST.GET_WEATHER_LIST_SUCCESS,
   payload,
 });

@@ -25,16 +25,26 @@ export const weather = (
       ...state,
       getWeatherListFetch: true,
       getWeatherListParam: payload,
+      getWeatherListRefreshed: payload?.isRefreshed,
     }),
-    [CONST.GET_WEATHER_LIST_SUCCESS]: () => ({
-      ...state,
-      getWeatherListFetch: false,
-      getWeatherListResponse: payload,
-    }),
+    [CONST.GET_WEATHER_LIST_SUCCESS]: () => {
+      const responseData = payload.isRefreshed
+        ? payload.response
+        : [...state.getWeatherListResponse, ...payload.response];
+      return {
+        ...state,
+        getWeatherListFetch: false,
+        getWeatherListRefreshed: payload.isRefreshed
+          ? false
+          : state.getWeatherListRefreshed,
+        getWeatherListResponse: responseData,
+      };
+    },
     [CONST.GET_WEATHER_LIST_FAILED]: () => ({
       ...state,
       getWeatherListFetch: false,
       getWeatherListError: payload,
+      getWeatherListRefreshed: false,
     }),
 
     [CONST.GET_WEATHER_FORECAST_REQ]: () => ({

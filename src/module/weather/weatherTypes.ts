@@ -13,6 +13,7 @@ export type Metric = {
 
 export type SimpleWeatherObject = {
   Key: string;
+  KeyIndex: string;
   EnglishName?: string;
   WeatherIcon?: string;
   Temperature?: {Metric?: Metric};

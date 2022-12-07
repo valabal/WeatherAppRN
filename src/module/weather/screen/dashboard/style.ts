@@ -1,3 +1,4 @@
+import {ColorPalete} from '@my-config/color';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
@@ -14,5 +15,15 @@ export default StyleSheet.create({
     height: 60,
     width: 60,
     marginLeft: 20,
+  },
+  footerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  loaderLabelStyle: {
+    marginLeft: 20,
+    color: ColorPalete.text.gray,
   },
 });

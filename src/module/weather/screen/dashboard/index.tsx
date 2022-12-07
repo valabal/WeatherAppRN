@@ -8,10 +8,11 @@ const mapStateToProps = (state: RootState) => ({
   weatherParams: state.weather.getWeatherListParam,
   isFetch: state.weather.getWeatherListFetch,
   error: state.weather.getWeatherListError.message,
+  isRefreshed: state.weather.getWeatherListRefreshed,
 });
 
 const mapDispatchToProps = {
-  getWeatherList: () => getWeatherList(),
+  getWeatherList: (payload?: any) => getWeatherList(payload),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

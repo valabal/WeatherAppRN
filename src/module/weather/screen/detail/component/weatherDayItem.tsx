@@ -9,7 +9,7 @@ const Styles = StyleSheet.create({
   mainContainer: {padding: 20, flexDirection: 'row', alignItems: 'center'},
   timeTextStyle: {flex: 1, color: ColorPalete.text.lightgray, fontSize: 20},
   weatherIconStyle: {width: 20, height: 20},
-  temperatureStyle: {marginHorizontal: 15},
+  temperatureStyle: {marginHorizontal: 15, width: 50, textAlign: 'center'},
 });
 
 export interface Props {

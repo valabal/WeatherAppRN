@@ -11,6 +11,7 @@ import {setErrorMessage} from '@my-module/alert/alertAction';
 import * as API from './weatherApi';
 import axios, {AxiosResponse} from 'axios';
 import {CityInput, SearchInput} from './weatherTypes';
+import createRandomNumber from '@my-util/random';
 
 function* networkError(error: any) {
   if (axios.isAxiosError(error)) {
@@ -26,12 +27,17 @@ function* networkError(error: any) {
   }
 }
 
-function* getWeatherList() {
+function* getWeatherList({payload}: any) {
   try {
     const response: AxiosResponse = yield call(API.getWeatherListApi);
     switch (response.status) {
       case RESPONSE_STATUS.SUCCESS:
-        yield put(ACTION.getWeatherListSuccess(response.data));
+        let responses = response.data;
+        responses.forEach((element: any) => {
+          element.KeyIndex = element.Key + createRandomNumber();
+        });
+        let result = {response: responses, isRefreshed: payload?.isRefreshed};
+        yield put(ACTION.getWeatherListSuccess(result));
         break;
       case RESPONSE_STATUS.ERROR:
         yield put(ACTION.getWeatherListFailed(response.data));

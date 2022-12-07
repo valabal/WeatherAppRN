@@ -1,3 +1,3 @@
 export default function createRandomNumber() {
-  return Math.floor(Math.random() * 1001);
+  return Date.now() + ' - ' + Math.floor(Math.random() * 1001);
 }

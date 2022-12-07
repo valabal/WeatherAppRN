@@ -7,6 +7,7 @@ import {
 
 export interface GetWeatherListStateType {
   getWeatherListFetch: boolean;
+  getWeatherListRefreshed: boolean;
   getWeatherListParam: any;
   getWeatherListResponse: Array<SimpleWeatherObject>;
   getWeatherListError: {
@@ -16,6 +17,7 @@ export interface GetWeatherListStateType {
 
 export const getWeatherListInitialState: GetWeatherListStateType = {
   getWeatherListFetch: false,
+  getWeatherListRefreshed: false,
   getWeatherListParam: null,
   getWeatherListResponse: [],
   getWeatherListError: {
