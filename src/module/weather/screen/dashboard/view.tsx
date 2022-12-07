@@ -11,6 +11,8 @@ import {WeatherItem, SearchField} from './component';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {SimpleWeatherObject} from '@my-module/weather/weatherTypes';
 import createRandomNumber from '@my-util/random';
+import {Image} from 'react-native-elements';
+import {WeatherIcon2} from '@my-config/image';
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
@@ -40,11 +42,20 @@ class Dashboard extends Component<Props> {
 
   render() {
     const {weatherList, navigation} = this.props;
+
     return (
       <SafeAreaView style={Styles.singleFlex}>
-        <View style={[Styles.titleContainer]}>
+        <View style={[Styles.headerContainer]}>
           <SearchField navigation={navigation} />
-          <Text style={[Styles.title]}>Weather App</Text>
+          <View style={Styles.titleContainer}>
+            <Text style={[Styles.title]}>Weather App</Text>
+            <Image
+              source={WeatherIcon2}
+              style={Styles.titleIconContainer}
+              height={null}
+              width={null}
+            />
+          </View>
         </View>
         <View style={Styles.singleFlex}>
           <FlatList

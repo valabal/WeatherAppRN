@@ -7,7 +7,12 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    paddingTop: 20,
   },
-  titleContainer: {paddingHorizontal: 20, paddingVertical: 10},
+  headerContainer: {paddingHorizontal: 20, paddingVertical: 10},
+  titleContainer: {flexDirection: 'row', alignItems: 'center', paddingTop: 10},
+  titleIconContainer: {
+    height: 60,
+    width: 60,
+    marginLeft: 20,
+  },
 });

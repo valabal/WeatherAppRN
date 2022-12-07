@@ -9,7 +9,7 @@ const Styles = StyleSheet.create({
   contentContainer: {padding: 20, flexDirection: 'row', alignItems: 'center'},
   cityText: {flex: 1, color: ColorPalete.text.gray, fontSize: 20},
   iconsStyle: {width: 30, height: 30},
-  temperatureText: {marginHorizontal: 15},
+  temperatureText: {marginHorizontal: 15, width: 50, textAlign: 'center'},
 });
 
 interface Props {

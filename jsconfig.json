@@ -22,6 +22,7 @@
          ],
         "@my-util/*": [
             "./src/util/*"
-        ]}
+        ],
+        "@my-assets/*": ["./src/assets/*"],},
     }
   }
