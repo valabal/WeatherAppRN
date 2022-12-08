@@ -1,5 +1,7 @@
-export const BASE_URL = 'http://dataservice.accuweather.com';
-export const API_KEY = 'oZgmplj9Z4QV3VvofTSqtUQwtcAnYyrU';
+import {BASE_URL as URL_BASE, API_KEY as KEY_API} from '@env';
+
+export const BASE_URL = URL_BASE;
+export const API_KEY = KEY_API;
 
 export const RESPONSE_STATUS = {
   SUCCESS: 200,

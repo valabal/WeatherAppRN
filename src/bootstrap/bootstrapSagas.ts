@@ -1,8 +1,8 @@
 import {all} from 'redux-saga/effects';
-import weather from '@my-module/weather/weatherSagas';
+import weatherSaga from '@my-module/weather/weatherSagas';
 
 function* bootstrapSagas() {
-  yield all([...weather]);
+  yield all([...weatherSaga]);
 }
 
 export default bootstrapSagas;

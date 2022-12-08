@@ -1,0 +1,194 @@
+[
+    {
+      "DateTime": "2022-12-08T15:00:00+08:00",
+      "EpochDateTime": 1670482800,
+      "WeatherIcon": 4,
+      "IconPhrase": "Intermittent clouds",
+      "HasPrecipitation": false,
+      "IsDaylight": true,
+      "Temperature": {
+        "Value": 41,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 6,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=15&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=15&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T16:00:00+08:00",
+      "EpochDateTime": 1670486400,
+      "WeatherIcon": 6,
+      "IconPhrase": "Mostly cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": true,
+      "Temperature": {
+        "Value": 38,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 6,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=16&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=16&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T17:00:00+08:00",
+      "EpochDateTime": 1670490000,
+      "WeatherIcon": 7,
+      "IconPhrase": "Cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": true,
+      "Temperature": {
+        "Value": 36,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 6,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=17&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=17&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T18:00:00+08:00",
+      "EpochDateTime": 1670493600,
+      "WeatherIcon": 7,
+      "IconPhrase": "Cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 33,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 6,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=18&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=18&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T19:00:00+08:00",
+      "EpochDateTime": 1670497200,
+      "WeatherIcon": 7,
+      "IconPhrase": "Cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 31,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 7,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=19&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=19&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T20:00:00+08:00",
+      "EpochDateTime": 1670500800,
+      "WeatherIcon": 7,
+      "IconPhrase": "Cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 28,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 7,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=20&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=20&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T21:00:00+08:00",
+      "EpochDateTime": 1670504400,
+      "WeatherIcon": 7,
+      "IconPhrase": "Cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 26,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 7,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=21&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=21&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T22:00:00+08:00",
+      "EpochDateTime": 1670508000,
+      "WeatherIcon": 38,
+      "IconPhrase": "Mostly cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 25,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 7,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=22&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=22&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-08T23:00:00+08:00",
+      "EpochDateTime": 1670511600,
+      "WeatherIcon": 38,
+      "IconPhrase": "Mostly cloudy",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 24,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 7,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=23&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=1&hbhhour=23&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-09T00:00:00+08:00",
+      "EpochDateTime": 1670515200,
+      "WeatherIcon": 36,
+      "IconPhrase": "Intermittent clouds",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 22,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 7,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=2&hbhhour=0&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=2&hbhhour=0&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-09T01:00:00+08:00",
+      "EpochDateTime": 1670518800,
+      "WeatherIcon": 34,
+      "IconPhrase": "Mostly clear",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 21,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 6,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=2&hbhhour=1&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=2&hbhhour=1&lang=en-us"
+    },
+    {
+      "DateTime": "2022-12-09T02:00:00+08:00",
+      "EpochDateTime": 1670522400,
+      "WeatherIcon": 33,
+      "IconPhrase": "Clear",
+      "HasPrecipitation": false,
+      "IsDaylight": false,
+      "Temperature": {
+        "Value": 19,
+        "Unit": "F",
+        "UnitType": 18
+      },
+      "PrecipitationProbability": 6,
+      "MobileLink": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=2&hbhhour=2&lang=en-us",
+      "Link": "http://www.accuweather.com/en/cn/wuqi-county/60499/hourly-weather-forecast/60499?day=2&hbhhour=2&lang=en-us"
+    }
+  ]

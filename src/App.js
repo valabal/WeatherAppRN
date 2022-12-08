@@ -4,6 +4,7 @@ import bootstrapSagas from '@my-bootstrap/bootstrapSagas';
 import {runSaga, store} from '@my-config/store';
 import Bootstrap from '@my-bootstrap/component';
 import AppNavigator from '@my-navigation/AppNavigator';
+import '@my-config/mockAPI/mockApi';
 
 runSaga(bootstrapSagas);
 
