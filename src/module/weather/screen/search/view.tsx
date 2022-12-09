@@ -7,7 +7,7 @@ import {
   TextInput,
   ListRenderItemInfo,
 } from 'react-native';
-import useDebounce from '@my-util/hook';
+import {useDebounce} from '@my-util/hook';
 import {SearchResultCell} from './component';
 import Styles from './style';
 import {StackNavigationProp} from '@react-navigation/stack';

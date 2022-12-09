@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 
-export default function useDebounce(value: any, delay: number) {
+export const useDebounce = (value: any, delay: number) => {
   // State and setters for debounced value
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(
@@ -19,4 +19,12 @@ export default function useDebounce(value: any, delay: number) {
     [value, delay], // Only re-call effect if value or delay changes
   );
   return debouncedValue;
-}
+};
+
+export const usePrevious = <T>(value: T): T | undefined => {
+  const ref = useRef<T>();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};

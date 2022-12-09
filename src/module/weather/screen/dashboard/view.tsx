@@ -16,6 +16,7 @@ import {WeatherIcon2} from '@my-config/image';
 import {strings} from '@my-config/string';
 import {ActivityIndicator} from 'react-native';
 import {useEffect} from 'react';
+import {usePrevious} from '@my-util/hook';
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
@@ -30,10 +31,15 @@ interface Props {
 export default function Dashboard(props: Props) {
   const {getWeatherList, navigation, weatherList} = props;
   const [page, setPage] = useState(0);
+  const prevPage = usePrevious({page});
 
   useEffect(() => {
-    getWeatherList();
-  }, [getWeatherList, page]);
+    if (prevPage?.page !== page) {
+      getWeatherList();
+    } else {
+      console.log('PAGE IS THE SAME AS PREVIOUS');
+    }
+  }, [getWeatherList, page, prevPage]);
 
   const renderItem = ({item}: ListRenderItemInfo<SimpleWeatherObject>) => {
     return <WeatherItem navigation={navigation} weather={item} />;
