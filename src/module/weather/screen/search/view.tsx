@@ -1,19 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  TextInput,
-  ListRenderItemInfo,
-} from 'react-native';
-import {useDebounce} from '@my-util/hook';
-import {SearchResultCell} from './component';
+import React from 'react';
+import {View, Text, SafeAreaView, TextInput} from 'react-native';
 import Styles from './style';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {CitySearchWeatherObject} from '@my-module/weather/weatherTypes';
-import createRandomNumber from '@my-util/random';
 import {strings} from '@my-config/string';
+import {SearchTable} from './component';
+import {useSearchPage} from './hook/useSearchPage';
 
 export type Props = {
   navigation: StackNavigationProp<any, any>;
@@ -23,25 +15,8 @@ export type Props = {
 };
 
 export default function SearchPage(props: Props) {
-  const [cityName, onChangeText] = useState('');
-
-  const debouncedSearchTerm = useDebounce(cityName, 500);
-
-  const {navigation, getCity, refreshCity, cityList} = props;
-
-  useEffect(() => {
-    if (debouncedSearchTerm) {
-      getCity(debouncedSearchTerm);
-    }
-  }, [getCity, debouncedSearchTerm]);
-
-  useEffect(() => {
-    refreshCity();
-  }, [refreshCity]);
-
-  const renderItem = ({item}: ListRenderItemInfo<CitySearchWeatherObject>) => (
-    <SearchResultCell item={item} navigation={navigation} />
-  );
+  const {getCity, refreshCity, navigation} = props;
+  const {cityName, onSearchCity} = useSearchPage(getCity, refreshCity);
 
   return (
     <SafeAreaView style={Styles.singleFlex}>
@@ -52,15 +27,19 @@ export default function SearchPage(props: Props) {
         <TextInput
           placeholder={strings.searchPlaceholder}
           style={Styles.texInputStyle}
-          onChangeText={onChangeText}
+          onChangeText={onSearchCity}
           value={cityName}
         />
       </View>
       <View style={Styles.singleFlex}>
-        <FlatList
-          data={cityList}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.Key + createRandomNumber()}
+        <SearchTable
+          {...props}
+          onCellPress={(cityId, cityNames) => {
+            navigation.navigate('WeatherDetail', {
+              cityId: cityId,
+              cityNames: cityNames,
+            });
+          }}
         />
       </View>
     </SafeAreaView>

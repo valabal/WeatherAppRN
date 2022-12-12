@@ -1,13 +1,13 @@
 import MyIcon from '@my-component/MyIcon';
 import {ColorPalete} from '@my-config/color';
 import {strings} from '@my-config/string';
-import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {
   View,
   TextInput,
   TouchableWithoutFeedback,
   StyleSheet,
+  GestureResponderEvent,
 } from 'react-native';
 
 const Styles = StyleSheet.create({
@@ -24,15 +24,12 @@ const Styles = StyleSheet.create({
 });
 
 export type Props = {
-  navigation: StackNavigationProp<any, any>;
+  onPress: (event: GestureResponderEvent) => void;
 };
 
 export default (props: Props) => {
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        props.navigation.navigate('SearchPage');
-      }}>
+    <TouchableWithoutFeedback onPress={props.onPress}>
       <View style={Styles.container}>
         <TextInput
           style={[Styles.textInput]}

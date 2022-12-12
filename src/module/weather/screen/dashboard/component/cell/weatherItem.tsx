@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 import {Divider, MyIcon, WeatherIcon as WIcon} from '@my-component/index';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {SimpleWeatherObject} from '@my-module/weather/weatherTypes';
 import {ColorPalete} from '@my-config/color';
 
@@ -13,22 +12,24 @@ const Styles = StyleSheet.create({
 });
 
 interface Props {
-  navigation: StackNavigationProp<any, any>;
   weather: SimpleWeatherObject;
 }
 
-class WeatherItem extends Component<Props> {
-  constructor(props: Props) {
+export interface WeatherItemCellPressed {
+  onCellPress: (weather: SimpleWeatherObject) => void;
+}
+
+type WeatherItemProps = Props & WeatherItemCellPressed;
+
+class WeatherItem extends Component<WeatherItemProps> {
+  constructor(props: WeatherItemProps) {
     super(props);
     this.onPress = this.onPress.bind(this);
   }
 
   onPress() {
-    const {navigation, weather} = this.props;
-    navigation.navigate('WeatherDetail', {
-      weather: weather,
-      cityId: weather.Key,
-    });
+    const {weather, onCellPress} = this.props;
+    onCellPress(weather);
   }
 
   render() {

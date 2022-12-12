@@ -1,1 +1,1 @@
-export {default as SearchResultCell} from './searchResult';
+export {default as SearchTable} from './searchTable';

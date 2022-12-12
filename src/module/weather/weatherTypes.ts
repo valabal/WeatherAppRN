@@ -11,26 +11,26 @@ export type Metric = {
   Unit?: string;
 };
 
-export type SimpleWeatherObject = {
+export interface WeatherObject {
   Key: string;
-  KeyIndex: string;
-  EnglishName?: string;
   WeatherIcon?: string;
   Temperature?: {Metric?: Metric};
-};
+}
+
+export interface SimpleWeatherObject extends WeatherObject {
+  KeyIndex: string;
+  EnglishName?: string;
+}
 
 export type CitySearchWeatherObject = {
   Key: string;
   LocalizedName?: string;
 };
 
-export type WeatherDayObject = {
-  Key: string;
+export interface WeatherDayObject extends WeatherObject {
   LocalObservationDateTime?: string;
-  WeatherIcon?: string;
-  Temperature?: {Metric?: Metric};
   EpochTime?: number;
-};
+}
 
 export type WeatherTimeObject = {
   Key: string;

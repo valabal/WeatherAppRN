@@ -5,6 +5,7 @@ import {TemperatureLabel, WeatherIcon} from '@my-component/index';
 import {StyleSheet} from 'react-native';
 import {WeatherTimeObject} from '@my-module/weather/weatherTypes';
 import {ColorPalete} from '@my-config/color';
+import {Spacer} from '@my-component/Spacer';
 
 const Styles = StyleSheet.create({
   mainContainer: {alignItems: 'center', width: 60, paddingTop: 10},
@@ -12,8 +13,6 @@ const Styles = StyleSheet.create({
   weatherIcon: {width: 30, height: 30},
   spacer: {height: 10},
 });
-
-const Spacer = () => <View style={Styles.spacer} />;
 
 export interface Props {
   item: WeatherTimeObject;
@@ -23,7 +22,6 @@ class WeatherTimeItem extends Component<Props> {
   constructor(props: Props) {
     super(props);
   }
-
   render() {
     const {item} = this.props;
     const dt = moment(item.DateTime).format('HH:mm');
@@ -31,9 +29,9 @@ class WeatherTimeItem extends Component<Props> {
     return (
       <View style={Styles.mainContainer}>
         <Text style={Styles.timeStyle}>{dt}</Text>
-        <Spacer />
+        <Spacer height={Styles.spacer.height} />
         <WeatherIcon style={Styles.weatherIcon} icon={item.WeatherIcon} />
-        <Spacer />
+        <Spacer height={Styles.spacer.height} />
         <TemperatureLabel metric={item.Temperature} />
       </View>
     );

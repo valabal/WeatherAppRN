@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 
 import {Divider, MyIcon} from '@my-component/index';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {CitySearchWeatherObject} from '@my-module/weather/weatherTypes';
 import {ColorPalete} from '@my-config/color';
 
@@ -13,22 +12,24 @@ const Styles = StyleSheet.create({
 });
 
 interface Props {
-  navigation: StackNavigationProp<any, any>;
   item: CitySearchWeatherObject;
 }
 
-class SearchResultCell extends Component<Props> {
-  constructor(props: Props) {
+export interface SearchItemCellPressed {
+  onCellPress: (cityId: string, cityName: string | undefined) => void;
+}
+
+type SearchCellProps = Props & SearchItemCellPressed;
+
+class SearchResultCell extends Component<SearchCellProps> {
+  constructor(props: SearchCellProps) {
     super(props);
     this.onPress = this.onPress.bind(this);
   }
 
   onPress() {
-    const {navigation, item} = this.props;
-    navigation.navigate('WeatherDetail', {
-      cityId: item.Key,
-      cityNames: item.LocalizedName,
-    });
+    const {onCellPress, item} = this.props;
+    onCellPress(item.Key, item.LocalizedName);
   }
 
   render() {

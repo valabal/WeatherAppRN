@@ -15,7 +15,7 @@ import {strings} from '@my-config/string';
 
 export type Props = {
   style: StyleProp<ViewStyle>;
-  children?: React.ReactNode;
+  children?: React.ReactNode; // read more https://dev.to/debs_obrien/typescript-and-react-children-4epg
   errorAllert: string;
   setErrorMessage: Function;
 };
