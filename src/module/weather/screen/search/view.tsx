@@ -6,6 +6,7 @@ import {CitySearchWeatherObject} from '@my-module/weather/weatherTypes';
 import {strings} from '@my-config/string';
 import {SearchTable} from './component';
 import {useSearchPage} from './hook/useSearchPage';
+import {SearchContext} from './component/ cell/searchResult';
 
 export type Props = {
   navigation: StackNavigationProp<any, any>;
@@ -17,6 +18,13 @@ export type Props = {
 export default function SearchPage(props: Props) {
   const {getCity, refreshCity, navigation} = props;
   const {cityName, onSearchCity} = useSearchPage(getCity, refreshCity);
+
+  const navigateToDetailPage = (cityId?: string, cityNames?: string) => {
+    navigation.navigate('WeatherDetail', {
+      cityId: cityId,
+      cityNames: cityNames,
+    });
+  };
 
   return (
     <SafeAreaView style={Styles.singleFlex}>
@@ -32,15 +40,9 @@ export default function SearchPage(props: Props) {
         />
       </View>
       <View style={Styles.singleFlex}>
-        <SearchTable
-          {...props}
-          onCellPress={(cityId, cityNames) => {
-            navigation.navigate('WeatherDetail', {
-              cityId: cityId,
-              cityNames: cityNames,
-            });
-          }}
-        />
+        <SearchContext.Provider value={{onCellPress: navigateToDetailPage}}>
+          <SearchTable {...props} />
+        </SearchContext.Provider>
       </View>
     </SafeAreaView>
   );

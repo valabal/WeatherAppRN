@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {createContext, useContext} from 'react';
 import {View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 
 import {Divider, MyIcon} from '@my-component/index';
@@ -19,39 +19,35 @@ export interface SearchItemCellPressed {
   onCellPress: (cityId: string, cityName: string | undefined) => void;
 }
 
-type SearchCellProps = Props & SearchItemCellPressed;
+export const SearchContext = createContext<SearchItemCellPressed>({
+  onCellPress: (_) => {},
+});
 
-class SearchResultCell extends Component<SearchCellProps> {
-  constructor(props: SearchCellProps) {
-    super(props);
-    this.onPress = this.onPress.bind(this);
-  }
+type SearchCellProps = Props;
 
-  onPress() {
-    const {onCellPress, item} = this.props;
+export default function SearchResultCell(props: SearchCellProps) {
+  const {item} = props;
+  const {onCellPress} = useContext(SearchContext);
+
+  const onPress = () => {
     onCellPress(item.Key, item.LocalizedName);
-  }
+  };
 
-  render() {
-    const {item} = this.props;
-    return (
-      <TouchableWithoutFeedback onPress={this.onPress}>
-        <View>
-          <View style={Styles.mainContainer}>
-            <View style={Styles.titleContainer}>
-              <Text style={Styles.title}>{item.LocalizedName}</Text>
-              <MyIcon
-                name="chevron-right"
-                size={25}
-                color={ColorPalete.icon.black}
-              />
-            </View>
+  return (
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View>
+        <View style={Styles.mainContainer}>
+          <View style={Styles.titleContainer}>
+            <Text style={Styles.title}>{item.LocalizedName}</Text>
+            <MyIcon
+              name="chevron-right"
+              size={25}
+              color={ColorPalete.icon.black}
+            />
           </View>
-          <Divider />
         </View>
-      </TouchableWithoutFeedback>
-    );
-  }
+        <Divider />
+      </View>
+    </TouchableWithoutFeedback>
+  );
 }
-
-export default SearchResultCell;

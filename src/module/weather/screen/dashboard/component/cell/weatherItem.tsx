@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {createContext, useContext} from 'react';
 import {View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 import {Divider, MyIcon, WeatherIcon as WIcon} from '@my-component/index';
 import {SimpleWeatherObject} from '@my-module/weather/weatherTypes';
@@ -19,45 +19,42 @@ export interface WeatherItemCellPressed {
   onCellPress: (weather: SimpleWeatherObject) => void;
 }
 
-type WeatherItemProps = Props & WeatherItemCellPressed;
+export const WeatherItemCellContext = createContext<WeatherItemCellPressed>({
+  onCellPress: (_) => {},
+});
 
-class WeatherItem extends Component<WeatherItemProps> {
-  constructor(props: WeatherItemProps) {
-    super(props);
-    this.onPress = this.onPress.bind(this);
-  }
+type WeatherItemProps = Props;
 
-  onPress() {
-    const {weather, onCellPress} = this.props;
+export default function WeatherItem(props: WeatherItemProps) {
+  const {onCellPress} = useContext(WeatherItemCellContext);
+  const {
+    weather,
+    weather: {EnglishName: cityName},
+    weather: {WeatherIcon},
+  } = props;
+
+  const onPress = () => {
     onCellPress(weather);
-  }
+  };
 
-  render() {
-    const {
-      weather: {EnglishName: cityName},
-      weather: {WeatherIcon},
-    } = this.props;
-    const metric = this.props.weather.Temperature?.Metric;
-    return (
-      <TouchableWithoutFeedback onPress={this.onPress}>
-        <View>
-          <View style={[Styles.contentContainer]}>
-            <Text style={[Styles.cityText]}>{cityName}</Text>
-            <WIcon style={[Styles.iconsStyle]} icon={WeatherIcon} />
-            <Text style={[Styles.temperatureText]}>
-              {metric?.Value + ' ' + metric?.Unit}
-            </Text>
-            <MyIcon
-              name="chevron-right"
-              size={25}
-              color={ColorPalete.icon.black}
-            />
-          </View>
-          <Divider />
+  const metric = props.weather.Temperature?.Metric;
+  return (
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View>
+        <View style={[Styles.contentContainer]}>
+          <Text style={[Styles.cityText]}>{cityName}</Text>
+          <WIcon style={[Styles.iconsStyle]} icon={WeatherIcon} />
+          <Text style={[Styles.temperatureText]}>
+            {metric?.Value + ' ' + metric?.Unit}
+          </Text>
+          <MyIcon
+            name="chevron-right"
+            size={25}
+            color={ColorPalete.icon.black}
+          />
         </View>
-      </TouchableWithoutFeedback>
-    );
-  }
+        <Divider />
+      </View>
+    </TouchableWithoutFeedback>
+  );
 }
-
-export default WeatherItem;

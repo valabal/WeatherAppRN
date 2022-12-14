@@ -12,7 +12,7 @@ import {SimpleWeatherObject} from '@my-module/weather/weatherTypes';
 import {ActivityIndicator} from 'react-native';
 import {ColorPalete} from '@my-config/color';
 import {UseDashboardProps} from '../hook/useDashboard';
-import WeatherItem, {WeatherItemCellPressed} from './cell/weatherItem';
+import WeatherItem from './cell/weatherItem';
 
 export interface Props {
   navigation: StackNavigationProp<any, any>;
@@ -24,7 +24,7 @@ export interface Props {
   isRefreshed?: boolean;
 }
 
-type DashboardProps = Props & UseDashboardProps & WeatherItemCellPressed;
+type DashboardProps = Props & UseDashboardProps;
 
 const Styles = StyleSheet.create({
   footerContainer: {
@@ -40,10 +40,10 @@ const Styles = StyleSheet.create({
 });
 
 export default function WeatherTable(props: DashboardProps) {
-  const {weatherList, getMore, refreshList, onCellPress} = props;
+  const {weatherList, getMore, refreshList} = props;
 
   const renderItem = ({item}: ListRenderItemInfo<SimpleWeatherObject>) => {
-    return <WeatherItem onCellPress={onCellPress} weather={item} />;
+    return <WeatherItem weather={item} />;
   };
 
   const renderFooter = () => {
